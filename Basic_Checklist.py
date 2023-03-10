@@ -21,8 +21,6 @@ for task in dailyTasks:
     task = task[:-1]
     dailyTasks2.append(task)
 
-print(dailyTasks2)
-
 main_window = Tk()
 main_window.title("Daily TaskList")
 
@@ -38,15 +36,10 @@ Optional horizontal padding to place around the widget in a cell. Default is 0.
 pady=
 Optional vertical padding to place around the widget in a cell. Default is 0.
 '''
-
-def do_a_task():
-  global tasks_done
-  tasks_done +=1
-
 r = 1
 for item in dailyTasks2:
     itemNumber = str(r) + ". "
-    Checkbutton(main_window, text=itemNumber + item,command=do_a_task ,font =(30)).grid(row=r,column=0,sticky=W)
+    Checkbutton(main_window, text=itemNumber + item, font =(30)).grid(row=r,column=0,sticky=W)
     r = r + 1
 
 mainloop()
