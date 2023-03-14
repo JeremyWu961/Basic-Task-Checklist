@@ -1,6 +1,6 @@
 from tkinter import *
 
-#open a text file with items for checklist
+'''#open a text file with items for checklist
 fileobject = open("input_file.txt")
 
 #initialize an empty list
@@ -19,7 +19,10 @@ dailyTasks2 = []
 #removes last character from "/n" and puts elements in a different list
 for task in dailyTasks:
     task = task[:-1]
-    dailyTasks2.append(task)
+    dailyTasks2.append(task)'''
+
+with open("input_file.txt") as fileObject:
+    dailyTasks = [line.strip() for line in fileObject]
 
 main_window = Tk()
 main_window.title("Daily TaskList")
@@ -37,7 +40,7 @@ pady=
 Optional vertical padding to place around the widget in a cell. Default is 0.
 '''
 r = 1
-for item in dailyTasks2:
+for item in dailyTasks:
     itemNumber = str(r) + ". "
     Checkbutton(main_window, text=itemNumber + item, font =(30)).grid(row=r,column=0,sticky=W)
     r = r + 1
