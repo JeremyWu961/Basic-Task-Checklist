@@ -1,6 +1,0 @@
-Task A
-Task B
-Task C
-Task D
-Task E
-Task F
