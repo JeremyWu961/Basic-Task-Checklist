@@ -28,7 +28,7 @@ getTxtFiles()
 def submit():
     selected_value = input_var.get()
     window.destroy() # Close the window
-    subprocess.call(['python', 'listGenerator.py', selected_value]) # Call main script with the selected value as an argument
+    subprocess.call(['python', 'listGenerator.pyw', selected_value],  creationflags=subprocess.CREATE_NO_WINDOW) # Call main script with the selected value as an argument
 
 # Create the window
 window = tk.Tk()
