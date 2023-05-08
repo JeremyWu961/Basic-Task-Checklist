@@ -25,30 +25,40 @@ def getTxtFiles():
         
 getTxtFiles()
 
+numberOfTxtFiles = len(taskLists)
+
 def submit():
-    selected_value = input_var.get()
-    window.destroy() # Close the window
-    subprocess.call(['python', 'listGenerator.pyw', selected_value],  creationflags=subprocess.CREATE_NO_WINDOW) # Call main script with the selected value as an argument
+    if(numberOfTxtFiles>1):
+        selected_value = input_var.get()
+        window.destroy() # Close the window
+        subprocess.call(['python', 'listGenerator.pyw', selected_value],  creationflags=subprocess.CREATE_NO_WINDOW) # Call main script with the selected value as an argument
+    elif(numberOfTxtFiles==1):
+        subprocess.call(['python', 'listGenerator.pyw', taskLists[0]],  creationflags=subprocess.CREATE_NO_WINDOW)
+    else:
+        print("Error with amount of .txt files")
 
-# Create the window
-window = tk.Tk()
-window.title("Title")
-window.option_add("*Font", "TkDefaultFont 20")
+if(numberOfTxtFiles>1):
+    # Create the window
+    window = tk.Tk()
+    window.title("Title")
+    window.option_add("*Font", "TkDefaultFont 20")
 
-# Adding widgets to the window here
-label = tk.Label(window, text="This program only works correctly if the \ntext files are formatted correctly")
-label.pack(pady=5)
-label2 = tk.Label(window, text="Select an option to create a checklist:")
-label2.pack(pady=5)
+    # Adding widgets to the window here
+    label = tk.Label(window, text="This program only works correctly if the \ntext files are formatted correctly")
+    label.pack(pady=5)
+    label2 = tk.Label(window, text="Select an option to create a checklist:")
+    label2.pack(pady=5)
 
-# Create a dropdown menu in window
-input_var = tk.StringVar()
-input_dropdown = ttk.Combobox(window, textvariable=input_var, values=taskLists)
-input_dropdown.pack(pady=5)
+    # Create a dropdown menu in window
+    input_var = tk.StringVar()
+    input_dropdown = ttk.Combobox(window, textvariable=input_var, values=taskLists)
+    input_dropdown.pack(pady=5)
 
-# Add a button to submit the input
-submit_button = tk.Button(window, text="Submit", command=submit)
-submit_button.pack(pady=5)
+    # Add a button to submit the input
+    submit_button = tk.Button(window, text="Submit", command=submit)
+    submit_button.pack(pady=5)
 
-# Start the main event loop to display the window
-window.mainloop()
+    # Start the main event loop to display the window
+    window.mainloop()
+elif(numberOfTxtFiles==1):
+    submit()
